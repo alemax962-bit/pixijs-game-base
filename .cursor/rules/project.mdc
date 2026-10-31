@@ -1,0 +1,29 @@
+---
+description: Master map for PixiJS Game Base — where rules, skills, and docs live
+alwaysApply: true
+---
+
+# PixiJS Game Base — agent orientation
+
+This repo is a **PixiJS 2D browser game foundation** designed so Cursor (and other agents) can build larger games consistently.
+
+## Read order
+
+1. `AGENTS.md` — hard rules + skill index
+2. Matching skill under `.cursor/skills/` for the task
+3. `docs/` for architecture and per-model API/prompt details
+
+## Non-negotiables
+
+- **Paid Replicate calls require user approval after a cost estimate.** Use `npm run estimate` / `tools/replicate/costs.ts`, show totals, wait for yes, then `npm run generate -- ... --yes`.
+- Image assets: `replicate/flux-2d-game-assets` (default) or Retro Diffusion pixel models.
+- Audio: `declare-lab/tango` with `model: "tango2"`.
+- Pixel anim: `retro-diffusion/rd-animation`. Other motion: I2V per `docs/models/image-to-video.md`.
+- Keep `.cursor/` committed — clones must receive these guidelines.
+- Never commit `.env` or `REPLICATE_API_TOKEN`.
+
+## Code layout
+
+- Runtime: `src/game/` (engine shell) + `src/scenes/` (game content)
+- Generation: `tools/replicate/` + `scripts/generate-asset.ts`
+- Do not dump gameplay into `main.ts`; register scenes instead.

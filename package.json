@@ -1,0 +1,28 @@
+{
+  "name": "pixijs-game-base",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Flexible PixiJS 2D browser game base with Cursor AI guidelines and Replicate asset generation",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "generate": "tsx scripts/generate-asset.ts",
+    "estimate": "tsx scripts/estimate-cost.ts"
+  },
+  "dependencies": {
+    "pixi.js": "^8.6.6"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "dotenv": "^16.4.7",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

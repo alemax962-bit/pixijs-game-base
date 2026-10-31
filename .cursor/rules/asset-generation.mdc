@@ -1,0 +1,17 @@
+---
+description: Mandatory Replicate cost approval and model selection for game assets
+globs: "{tools/replicate/**,scripts/**,public/assets/**,docs/models/**}"
+alwaysApply: false
+---
+
+# Asset generation rules
+
+1. Estimate cost → show user → wait for approval → only then run.
+2. Prefer catalog helpers in `tools/replicate/models.ts` (do not invent slugs).
+3. Model choice:
+   - Non-pixel props/UI/items → `flux-2d-game-assets` (trigger word **FGAL**, white/simple bg)
+   - Quality pixel → `rd-plus`; draft pixel → `rd-fast`; tiles → `rd-tile`; pixel anim → `rd-animation`
+   - Audio → `tango` / `tango2`
+   - Non-pixel video loops → `wan-2.2-i2v-fast` (or user-picked I2V model)
+4. Save under `public/assets/images|audio|sprites/` with descriptive prefixes.
+5. After generation, wire aliases in the scene — do not leave orphan files undocumented.

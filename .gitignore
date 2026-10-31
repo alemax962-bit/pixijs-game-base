@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+
+# Build
+dist/
+*.local
+
+# Environment (never commit secrets)
+.env
+.env.local
+.env.*.local
+
+# IDE / OS
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Logs & caches
+*.log
+npm-debug.log*
+.tsx-cache/
+.vite/
+
+# Generated assets that are large / ephemeral (keep folder structure)
+public/assets/images/*
+!public/assets/images/.gitkeep
+public/assets/audio/*
+!public/assets/audio/.gitkeep
+public/assets/sprites/*
+!public/assets/sprites/.gitkeep
+
+# NOTE: .cursor/ IS committed on purpose so clones get AI guidelines

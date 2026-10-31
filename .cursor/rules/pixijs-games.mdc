@@ -1,0 +1,16 @@
+---
+description: PixiJS v8 architecture conventions for flexible 2D browser games
+globs: src/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# PixiJS game conventions
+
+- Use **PixiJS v8** (`Application.init`, `Assets`, `Graphics` chain API).
+- One `Game` owns the app + shared systems; **Scenes** own genre logic.
+- Register scenes with `game.scenes.register` / `change` — no global singletons for level state.
+- Input: bind actions (`input.bind('jump', ['Space','KeyW'])`), never hardcode keys in entities.
+- Load textures via `AssetSystem` aliases pointing at `/assets/...`.
+- Prefer `Container` composition; use `Entity` only when an update hook helps.
+- Keep fixed-timestep physics optional — if added, isolate under `src/game/systems/`.
+- Target modern browsers; no Node APIs inside `src/`.
