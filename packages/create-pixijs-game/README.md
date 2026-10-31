@@ -24,15 +24,12 @@ node packages/create-pixijs-game/bin/create-pixijs-game.mjs my-adventure --local
 
 ### Remote template
 
-After you push the template repo to GitHub:
+Default remote template: `github:alemax962-bit/pixijs-game-base`.
 
 ```bash
-npx create-pixijs-game my-game --template github:YOUR_USER/PixiJSBase
-# or permanently:
-# set PIXIJS_GAME_TEMPLATE=github:YOUR_USER/PixiJSBase
+npx create-pixijs-game my-game
+npx create-pixijs-game my-game --template github:alemax962-bit/pixijs-game-base
 ```
-
-Remote mode needs [`giget`](https://github.com/unjs/giget) available (`npm i -g giget` or install it next to the create package when publishing).
 
 ## What you get
 
@@ -43,7 +40,9 @@ Remote mode needs [`giget`](https://github.com/unjs/giget) available (`npm i -g 
 
 ## Publish (maintainers)
 
-1. Replace `OWNER` in this package’s `package.json` / default template with your GitHub org/user.
-2. Set default `PIXIJS_GAME_TEMPLATE` / `DEFAULT_REMOTE_TEMPLATE` to `github:you/PixiJSBase`.
-3. From `packages/create-pixijs-game`: add `giget` as a dependency, then `npm publish --access public`.
-4. Mark the GitHub repo as a **Template repository** so people can also use “Use this template”.
+See [docs/PUBLISHING.md](../../docs/PUBLISHING.md).
+
+```bash
+npm login
+npm publish -w create-pixijs-game --access public
+```

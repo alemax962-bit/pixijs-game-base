@@ -11,6 +11,7 @@ This repository is a **flexible PixiJS 2D browser-game starter** plus **Cursor g
 | `.cursor/skills/*/SKILL.md` | Task skillsets — generate art, audio, animate, structure scenes |
 | `docs/` | Human + agent reference (architecture, prompting, per-model API) |
 | `docs/COSTS.md` | **Official Replicate pricing tables** (no need to re-search) |
+| `docs/PUBLISHING.md` | Push to GitHub, publish `create-pixijs-game` to npm, how users scaffold |
 | `tools/replicate/` | Cost estimates + approved Replicate API client |
 | `scripts/generate-asset.ts` | CLI that **must** get user cost approval before paid runs |
 

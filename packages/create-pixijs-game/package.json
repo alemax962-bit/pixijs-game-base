@@ -26,11 +26,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/OWNER/PixiJSBase.git",
+    "url": "git+https://github.com/alemax962-bit/pixijs-game-base.git",
     "directory": "packages/create-pixijs-game"
   },
   "bugs": {
-    "url": "https://github.com/OWNER/PixiJSBase/issues"
+    "url": "https://github.com/alemax962-bit/pixijs-game-base/issues"
   },
-  "homepage": "https://github.com/OWNER/PixiJSBase#readme"
+  "homepage": "https://github.com/alemax962-bit/pixijs-game-base#readme",
+  "dependencies": {
+    "giget": "^2.0.0"
+  }
 }

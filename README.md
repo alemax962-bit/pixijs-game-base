@@ -12,7 +12,7 @@ npm run create -- my-adventure
 
 # After you publish create-pixijs-game + push the template to GitHub:
 npm create pixijs-game@latest my-adventure
-npx create-pixijs-game my-adventure --template github:YOUR_USER/PixiJSBase
+npx create-pixijs-game my-adventure --template github:alemax962-bit/pixijs-game-base
 ```
 
 Then:
@@ -81,16 +81,17 @@ Agents must follow `AGENTS.md` and the skills under `.cursor/skills/`. Official 
 
 ## GitHub + npm publish
 
-`.cursor/` is **not** gitignored — push it so clones get the same AI guidelines.
+**Full step-by-step:** [docs/PUBLISHING.md](docs/PUBLISHING.md)
+
+| | Name |
+|--|------|
+| GitHub | https://github.com/alemax962-bit/pixijs-game-base |
+| npm | `create-pixijs-game` → `npm create pixijs-game@latest` |
 
 ```bash
-git remote add origin git@github.com:YOU/PixiJSBase.git
-git push -u origin main
+npm login
+npm publish -w create-pixijs-game --access public
 ```
-
-1. In GitHub → **Settings → Template repository**.
-2. Set `PIXIJS_GAME_TEMPLATE=github:YOU/PixiJSBase` (and replace `OWNER` in `packages/create-pixijs-game`).
-3. Publish the create package: `npm publish -w create-pixijs-game --access public` (add `giget` as a dependency first for remote scaffolds).
 
 ## License
 

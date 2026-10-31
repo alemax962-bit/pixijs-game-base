@@ -33,9 +33,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const CREATE_PKG_ROOT = path.resolve(__dirname, '..');
 const MONOREPO_ROOT = path.resolve(CREATE_PKG_ROOT, '../..');
 
-/** Override after you push: PIXIJS_GAME_TEMPLATE=github:you/PixiJSBase */
+/** Override with PIXIJS_GAME_TEMPLATE if you fork the template repo */
 const DEFAULT_REMOTE_TEMPLATE =
-  process.env.PIXIJS_GAME_TEMPLATE ?? 'github:OWNER/PixiJSBase#main';
+  process.env.PIXIJS_GAME_TEMPLATE ?? 'github:alemax962-bit/pixijs-game-base#main';
 
 const SKIP_NAMES = new Set([
   'node_modules',
