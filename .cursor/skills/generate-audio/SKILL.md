@@ -14,7 +14,7 @@ description: Generate game sound effects and ambient audio with declare-lab/tang
 ## Workflow
 
 1. `npm run estimate -- --model tango --steps 100`
-2. Present ~$0.054/run estimate (scales roughly with steps) and ask approval
+2. Present official ~$0.054/run estimate (`docs/COSTS.md`) and ask approval
 3. `npm run generate -- --model tango --prompt "..." --yes --prefix sfx-<name>`
 4. `game.audio.load(key, url)` then `play` after a user gesture (`audio.unlock()`)
 

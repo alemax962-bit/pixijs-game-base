@@ -1,4 +1,12 @@
 import { getModel, type ModelDef } from './models.ts';
+import {
+  FIXED_RUN_PRICES,
+  PRICING_SNAPSHOT,
+  priceRdFast,
+  priceRdPlus,
+  priceRdTile,
+  priceWanI2vFast,
+} from './pricing.ts';
 
 export interface CostEstimate {
   model: ModelDef;
@@ -6,6 +14,7 @@ export interface CostEstimate {
   outputsPerRun: number;
   approxUsdPerRun: number;
   approxUsdTotal: number;
+  pricingVariant: string;
   notes: string;
   disclaimer: string;
 }
@@ -16,37 +25,72 @@ function outputsFromInput(input: Record<string, unknown>): number {
   return 1;
 }
 
-function usdPerRun(model: ModelDef, input: Record<string, unknown>): number {
+function usdPerRun(model: ModelDef, input: Record<string, unknown>): { usd: number; variant: string; notes: string } {
   const outputs = outputsFromInput(input);
 
   switch (model.id) {
-    case 'flux-2d-game-assets':
-      return model.approxCostUsd * outputs;
-    case 'rd-plus':
-      return 0.06 * outputs;
-    case 'rd-fast':
-      return 0.03 * outputs;
-    case 'rd-tile': {
-      const style = String(input.style ?? 'tileset');
-      if (style === 'tileset' || style === 'tileset_advanced') return 0.1;
-      return 0.06 * outputs;
+    case 'flux-2d-game-assets': {
+      const fixed = FIXED_RUN_PRICES['flux-2d-game-assets'];
+      return {
+        usd: fixed.usdPerRun * outputs,
+        variant: 'approx_per_run',
+        notes: `Official page (~$${fixed.usdPerRun}/run, ~${fixed.runsPerDollar}/$1, ${fixed.hardware}). × num_outputs.`,
+      };
     }
-    case 'rd-animation':
-      return model.approxCostUsd;
+    case 'rd-plus': {
+      const priced = priceRdPlus(input);
+      return {
+        usd: priced.usdPerImage * outputs,
+        variant: priced.variant,
+        notes: `Official Replicate tier ${priced.variant}: $${priced.usdPerImage}/image × ${outputs}. See docs/COSTS.md`,
+      };
+    }
+    case 'rd-fast': {
+      const priced = priceRdFast(input);
+      return {
+        usd: priced.usdPerImage * outputs,
+        variant: priced.variant,
+        notes: `Official Replicate tier by pixels: $${priced.usdPerImage}/image × ${outputs}. See docs/COSTS.md`,
+      };
+    }
+    case 'rd-tile': {
+      const priced = priceRdTile(input);
+      return {
+        usd: priced.usdPerImage * outputs,
+        variant: priced.variant,
+        notes: `Official Replicate tier ${priced.variant}: $${priced.usdPerImage}/image × ${outputs}. See docs/COSTS.md`,
+      };
+    }
+    case 'rd-animation': {
+      const fixed = FIXED_RUN_PRICES['rd-animation'];
+      return {
+        usd: fixed.usdPerOutput * outputs,
+        variant: 'per_output_image',
+        notes: `Official: $${fixed.usdPerOutput} per output image (~${fixed.outputsPerDollar}/$1).`,
+      };
+    }
     case 'tango': {
-      const steps = typeof input.steps === 'number' ? input.steps : 100;
-      // Base ~$0.054 at 100 steps; rough linear scale for estimate only
-      return model.approxCostUsd * (steps / 100);
+      const fixed = FIXED_RUN_PRICES.tango;
+      return {
+        usd: fixed.usdPerRun,
+        variant: 'approx_per_run',
+        notes: `Official page (~$${fixed.usdPerRun}/run, ~${fixed.runsPerDollar}/$1, ${fixed.hardware}). Varies with inputs/steps.`,
+      };
     }
     case 'wan-2.2-i2v-fast': {
-      const frames = typeof input.num_frames === 'number' ? input.num_frames : 81;
-      const fps = typeof input.frames_per_second === 'number' ? input.frames_per_second : 16;
-      const seconds = frames / fps;
-      // Conservative placeholder — confirm live pricing for batches
-      return Math.max(0.02, seconds * 0.01);
+      const priced = priceWanI2vFast(input);
+      return {
+        usd: priced.usdPerVideo,
+        variant: priced.variant,
+        notes: `Official Replicate: $${priced.usdPerVideo}/video (${priced.variant}). Pricing based on duration at 16 fps.`,
+      };
     }
     default:
-      return model.approxCostUsd * outputs;
+      return {
+        usd: model.approxCostUsd * outputs,
+        variant: 'fallback',
+        notes: model.costNotes,
+      };
   }
 }
 
@@ -57,7 +101,8 @@ export function estimateCost(
 ): CostEstimate {
   const model = getModel(modelKeyOrId);
   const merged = { ...model.defaultInput, ...input };
-  const approxUsdPerRun = usdPerRun(model, merged);
+  const priced = usdPerRun(model, merged);
+  const approxUsdPerRun = priced.usd;
   const approxUsdTotal = approxUsdPerRun * runs;
 
   return {
@@ -66,9 +111,9 @@ export function estimateCost(
     outputsPerRun: outputsFromInput(merged),
     approxUsdPerRun: roundMoney(approxUsdPerRun),
     approxUsdTotal: roundMoney(approxUsdTotal),
-    notes: model.costNotes,
-    disclaimer:
-      'Estimate only. Replicate bills actual usage; prices change. Do not run until the user approves.',
+    pricingVariant: priced.variant,
+    notes: priced.notes,
+    disclaimer: `Based on official Replicate pricing tables (snapshot ${PRICING_SNAPSHOT}). Live bills may differ if Replicate changes prices. Do not run until the user approves.`,
   };
 }
 
@@ -80,12 +125,13 @@ export function formatCostReport(estimate: CostEstimate, purpose: string): strin
     `Purpose : ${purpose}`,
     `Model   : ${estimate.model.slug}`,
     `Kind    : ${estimate.model.kind}`,
+    `Variant : ${estimate.pricingVariant}`,
     `Runs    : ${estimate.runs}`,
     `Outputs : ~${estimate.outputsPerRun} per run`,
     `Est/run : $${estimate.approxUsdPerRun.toFixed(4)}`,
     `Est total: $${estimate.approxUsdTotal.toFixed(4)} USD`,
     `Notes   : ${estimate.notes}`,
-    `Docs    : ${estimate.model.docs}`,
+    `Docs    : ${estimate.model.docs} | docs/COSTS.md`,
     '',
     estimate.disclaimer,
     '════════════════════════════════════════',

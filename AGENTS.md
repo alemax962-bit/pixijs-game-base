@@ -10,6 +10,7 @@ This repository is a **flexible PixiJS 2D browser-game starter** plus **Cursor g
 | `.cursor/rules/*.mdc` | Always-on / scoped project rules (committed to git) |
 | `.cursor/skills/*/SKILL.md` | Task skillsets — generate art, audio, animate, structure scenes |
 | `docs/` | Human + agent reference (architecture, prompting, per-model API) |
+| `docs/COSTS.md` | **Official Replicate pricing tables** (no need to re-search) |
 | `tools/replicate/` | Cost estimates + approved Replicate API client |
 | `scripts/generate-asset.ts` | CLI that **must** get user cost approval before paid runs |
 
@@ -24,6 +25,17 @@ This repository is a **flexible PixiJS 2D browser-game starter** plus **Cursor g
    - Getting explicit approval
    - Then running with `--yes` / `yes: true`
 5. Set `REPLICATE_API_TOKEN` in `.env` (see `.env.example`). Never commit `.env`.
+
+## Scaffolding a new game repo
+
+Prefer the create CLI (does not invent a one-off folder layout):
+
+```bash
+npm run create -- my-game          # from this monorepo
+# later: npm create pixijs-game@latest my-game
+```
+
+Do not hand-copy selectively unless the user asks — the scaffolder includes `.cursor/`, docs, and tools.
 
 ## Building games on this base
 

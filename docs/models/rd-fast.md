@@ -3,9 +3,16 @@
 Fast / cheap pixel art for iteration (lower fidelity than rd-plus).  
 https://replicate.com/retro-diffusion/rd-fast
 
-## Cost
+## Cost (official Replicate Pricing, snapshot 2026-10-31)
 
-~**$0.03** per image.
+Priced **per output image** by pixel count (all styles). Full table: `docs/COSTS.md`.
+
+| Size | USD |
+|------|-----|
+| ≤32² | **$0.017** |
+| 128² | **$0.02** |
+| 256² | **$0.028** |
+| 384²+ | **$0.042** |
 
 ## Useful styles
 

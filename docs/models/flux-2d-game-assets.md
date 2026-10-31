@@ -3,10 +3,14 @@
 Flux LoRA for 2D game assets.  
 https://replicate.com/replicate/flux-2d-game-assets
 
-## Cost / hardware
+## Cost / hardware (official page, snapshot 2026-10-31)
 
-- ~**$0.012** per run (about 83 runs / $1) — varies by inputs
-- Nvidia H100, typically ~8s
+From https://replicate.com/replicate/flux-2d-game-assets — *Run time and cost*:
+
+- Approximately **$0.012** to run (~83 runs / $1); varies with inputs
+- Nvidia H100; predictions typically complete within ~8 seconds
+
+See also `docs/COSTS.md`.
 
 ## API inputs (essentials)
 

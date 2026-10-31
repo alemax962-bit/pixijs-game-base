@@ -3,10 +3,14 @@
 Text-to-audio for SFX and ambient sounds.  
 https://replicate.com/declare-lab/tango
 
-## Cost
+## Cost (official page, snapshot 2026-10-31)
 
-- ~**$0.054** per run (varies; ~18 runs / $1 listed)
-- Nvidia L40S; often ~1 minute depending on steps
+From https://replicate.com/declare-lab/tango — *Run time and cost*:
+
+- Approximately **$0.054** to run (~18 runs / $1); varies with inputs
+- Nvidia L40S; typically ~56 seconds (predict time varies significantly)
+
+See also `docs/COSTS.md`.
 
 ## API inputs
 

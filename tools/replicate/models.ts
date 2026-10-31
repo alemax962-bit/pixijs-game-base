@@ -1,7 +1,7 @@
 /**
  * Canonical Replicate model catalog for this game base.
- * Keep costs conservative estimates — always confirm with the user before running.
- * Live pricing can drift; see each model's Replicate page.
+ * Official dollar tables live in pricing.ts / docs/COSTS.md (snapshot from model pages).
+ * Always confirm with the user before running paid predictions.
  */
 
 export type AssetKind = 'image' | 'pixel' | 'tile' | 'pixel-anim' | 'audio' | 'video';
@@ -48,10 +48,10 @@ export const MODELS = {
     id: 'rd-plus',
     slug: 'retro-diffusion/rd-plus',
     kind: 'pixel',
-    approxCostUsd: 0.06,
+    approxCostUsd: 0.034,
     description: 'High-quality authentic pixel art (scenes, maps, UI, icons)',
     docs: 'docs/models/rd-plus.md',
-    costNotes: '~$0.06 × num_images (Replicate/Retro Diffusion list price).',
+    costNotes: 'Official Replicate tiers by style+pixels; default 128² large ≈ $0.034/image. See docs/COSTS.md',
     defaultInput: {
       style: 'default',
       width: 128,
@@ -68,10 +68,10 @@ export const MODELS = {
     id: 'rd-fast',
     slug: 'retro-diffusion/rd-fast',
     kind: 'pixel',
-    approxCostUsd: 0.03,
+    approxCostUsd: 0.02,
     description: 'Fast cheap pixel art for iteration (lower quality)',
     docs: 'docs/models/rd-fast.md',
-    costNotes: '~$0.03 × num_images.',
+    costNotes: 'Official Replicate tiers by pixels; 128² ≈ $0.02/image. See docs/COSTS.md',
     defaultInput: {
       style: 'game_asset',
       width: 128,
@@ -91,7 +91,7 @@ export const MODELS = {
     approxCostUsd: 0.1,
     description: 'Pixel tilesets, single tiles, tile/scene objects',
     docs: 'docs/models/rd-tile.md',
-    costNotes: 'Tilesets ~$0.10/run; single tiles/objects often ~$0.024–$0.06. Estimate uses $0.10.',
+    costNotes: 'Official: tileset/tileset_advanced $0.10 flat; small/large tiers by pixels. See docs/COSTS.md',
     defaultInput: {
       style: 'tileset',
       width: 32,
@@ -108,7 +108,7 @@ export const MODELS = {
     approxCostUsd: 0.07,
     description: 'Pixel art walk/idle/VFX animations & spritesheets',
     docs: 'docs/models/rd-animation.md',
-    costNotes: 'Base animations ~$0.07/run; advanced styles can be $0.10–$0.25.',
+    costNotes: 'Official Replicate: $0.07 per output image (~14/$1).',
     defaultInput: {
       style: 'four_angle_walking',
       width: 48,
@@ -125,7 +125,7 @@ export const MODELS = {
     approxCostUsd: 0.054,
     description: 'Tango 2 text-to-audio for SFX and ambient sounds',
     docs: 'docs/models/tango.md',
-    costNotes: '~$0.054/run (varies with steps). Prefer model=tango2.',
+    costNotes: 'Official page ≈ $0.054/run (~18/$1, L40S). Prefer model=tango2.',
     defaultInput: {
       model: 'tango2',
       steps: 100,
@@ -140,7 +140,7 @@ export const MODELS = {
     approxCostUsd: 0.05,
     description: 'Fast cheap image-to-video for non-pixel motion loops',
     docs: 'docs/models/image-to-video.md',
-    costNotes: 'Rough estimate; priced by duration/resolution. Confirm on Replicate before large batches.',
+    costNotes: 'Official: 480p base $0.05, 720p base $0.11 (interpolate higher). See docs/COSTS.md',
     defaultInput: {
       go_fast: true,
       num_frames: 81,

@@ -1,0 +1,36 @@
+{
+  "name": "create-pixijs-game",
+  "version": "0.1.0",
+  "description": "Scaffold a PixiJS 2D browser game from the PixiJS Game Base template (Cursor guidelines + Replicate assets)",
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "create-pixijs-game": "./bin/create-pixijs-game.mjs"
+  },
+  "files": [
+    "bin",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "pixi",
+    "pixijs",
+    "game",
+    "scaffold",
+    "create",
+    "template",
+    "cursor",
+    "replicate"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OWNER/PixiJSBase.git",
+    "directory": "packages/create-pixijs-game"
+  },
+  "bugs": {
+    "url": "https://github.com/OWNER/PixiJSBase/issues"
+  },
+  "homepage": "https://github.com/OWNER/PixiJSBase#readme"
+}

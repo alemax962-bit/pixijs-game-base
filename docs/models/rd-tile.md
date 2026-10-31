@@ -3,10 +3,13 @@
 Pixel tilesets and tile-related assets.  
 https://replicate.com/retro-diffusion/rd-tile
 
-## Cost
+## Cost (official Replicate Pricing, snapshot 2026-10-31)
 
-- Full tilesets (`tileset` / `tileset_advanced`): ~**$0.10** / run
-- Single tiles / objects: often ~**$0.024–$0.06** — confirm on Replicate
+Full table: `docs/COSTS.md`.
+
+- `tileset` / `tileset_advanced`: flat **$0.10** / output image
+- `single_tile` / `tile_variation` / `tile_object`: **$0.024–$0.051** by size
+- `scene_object`: **$0.028–$0.099** by size
 
 ## Styles
 

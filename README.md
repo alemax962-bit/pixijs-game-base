@@ -2,9 +2,29 @@
 
 Flexible **PixiJS v8** starter for 2D browser games, shipped with **Cursor rules/skills** and a **Replicate** pipeline for generating images, pixel art, animations, and audio — with **mandatory cost approval** before any paid run.
 
-Use this repo as the foundation for larger games so agents (and humans) share the same architecture and asset workflow.
+## Create a new game (recommended)
 
-## Quick start
+Like `create-react-app` / `npm create vite`, scaffold a fresh project from this base:
+
+```bash
+# From a checkout of this repo (works today, no publish needed)
+npm run create -- my-adventure
+
+# After you publish create-pixijs-game + push the template to GitHub:
+npm create pixijs-game@latest my-adventure
+npx create-pixijs-game my-adventure --template github:YOUR_USER/PixiJSBase
+```
+
+Then:
+
+```bash
+cd my-adventure
+npm run dev
+```
+
+Also supported: mark this GitHub repo as a **Template repository**, then use **Use this template → Create a new repository**.
+
+## Develop this template itself
 
 ```bash
 cp .env.example .env   # add REPLICATE_API_TOKEN when you need AI assets
@@ -24,8 +44,10 @@ Open the Vite URL (default http://localhost:5173). You should see the demo scene
 | `.cursor/skills/` | Task skillsets for agents (**committed**) |
 | `AGENTS.md` | Entry guide for AI coding agents |
 | `docs/` | Architecture + per-model API/prompt docs |
+| `docs/COSTS.md` | Official Replicate pricing tables (for estimates) |
 | `tools/replicate/` | Model catalog, cost estimates, approved client |
 | `scripts/generate-asset.ts` | CLI generator with approval gate |
+| `packages/create-pixijs-game/` | `npm create pixijs-game` scaffolder |
 
 ## Generate assets (Replicate)
 
@@ -55,16 +77,20 @@ npm run generate -- --model flux-2d-game-assets --prompt "FGAL iron sword, white
 | `tango` | Audio (Tango 2) |
 | `wan-2.2-i2v-fast` | Cheap image-to-video |
 
-Agents must follow `AGENTS.md` and the skills under `.cursor/skills/`.
+Agents must follow `AGENTS.md` and the skills under `.cursor/skills/`. Official prices: `docs/COSTS.md`.
 
-## GitHub
+## GitHub + npm publish
 
-`.cursor/` is **not** gitignored — push it so anyone cloning the repo gets the same AI guidelines.
+`.cursor/` is **not** gitignored — push it so clones get the same AI guidelines.
 
 ```bash
-git remote add origin git@github.com:YOU/pixijs-game-base.git
+git remote add origin git@github.com:YOU/PixiJSBase.git
 git push -u origin main
 ```
+
+1. In GitHub → **Settings → Template repository**.
+2. Set `PIXIJS_GAME_TEMPLATE=github:YOU/PixiJSBase` (and replace `OWNER` in `packages/create-pixijs-game`).
+3. Publish the create package: `npm publish -w create-pixijs-game --access public` (add `giget` as a dependency first for remote scaffolds).
 
 ## License
 

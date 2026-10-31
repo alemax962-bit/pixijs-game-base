@@ -7,11 +7,11 @@ description: Generate authentic pixel art, tilesets, and draft sprites using Ret
 
 ## Pick a model
 
-| Need | Model id | ~USD |
+| Need | Model id | Official ~USD (see docs/COSTS.md) |
 |------|----------|------|
-| Quality assets / maps / UI | `rd-plus` | $0.06/image |
-| Fast cheap drafts | `rd-fast` | $0.03/image |
-| Tilesets / tile objects | `rd-tile` | ~$0.06–$0.10 |
+| Quality assets / maps / UI | `rd-plus` | $0.028–$0.099 by style/size (128² large ≈ $0.034) |
+| Fast cheap drafts | `rd-fast` | $0.017–$0.042 by size (128² ≈ $0.02) |
+| Tilesets / tile objects | `rd-tile` | tileset $0.10; tiles/objects $0.024–$0.099 |
 
 ## Workflow
 

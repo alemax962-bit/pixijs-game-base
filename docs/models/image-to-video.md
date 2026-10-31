@@ -19,7 +19,16 @@ Use when you need motion from a **still** that is **not** Retro Diffusion pixel 
 | `frames_per_second` | Pricing often tied to duration @ 16fps |
 | `go_fast` | Prefer `true` for drafts |
 
-Cost is **duration/resolution sensitive** — always estimate and get approval. The repo’s dollar estimate is a rough placeholder; check the model page for live pricing on large batches.
+### Official pricing (snapshot 2026-10-31)
+
+From https://replicate.com/wan-video/wan-2.2-i2v-fast:
+
+| | 480p | 720p |
+|--|------|------|
+| base | **$0.05** | **$0.11** |
+| interpolate | **$0.065** | **$0.145** |
+
+Pricing is based on video duration at 16 fps. Always estimate + get approval. Full notes: `docs/COSTS.md`.
 
 ## Other options (pick with the user)
 

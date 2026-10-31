@@ -3,9 +3,18 @@
 High-quality authentic pixel art.  
 https://replicate.com/retro-diffusion/rd-plus
 
-## Cost
+## Cost (official Replicate Pricing, snapshot 2026-10-31)
 
-~**$0.06** per image (`num_images` multiplies).
+Priced **per output image** by style variant + pixel count. Full table: `docs/COSTS.md`.
+
+Examples:
+
+- `classic` @ ≤32² → **$0.025**
+- large styles (e.g. `default`) @ ≤128² → **$0.034**
+- large @ ≤256² → **$0.058**
+- large @ 384²+ → **$0.099**
+
+`num_images` multiplies.
 
 ## Useful styles
 

@@ -20,7 +20,7 @@ Prefer `--spritesheet` / `return_spritesheet: true` for Pixi `Spritesheet` loadi
 npm run generate -- --model rd-animation --prompt "blue slime" --style four_angle_walking --spritesheet --yes --prefix slime-walk
 ```
 
-~$0.07/run (advanced styles higher). Docs: `docs/models/rd-animation.md`
+Official: **$0.07**/output. Docs: `docs/models/rd-animation.md`, `docs/COSTS.md`
 
 ## Non-pixel motion → image-to-video
 

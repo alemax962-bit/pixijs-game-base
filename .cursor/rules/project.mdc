@@ -12,6 +12,7 @@ This repo is a **PixiJS 2D browser game foundation** designed so Cursor (and oth
 1. `AGENTS.md` — hard rules + skill index
 2. Matching skill under `.cursor/skills/` for the task
 3. `docs/` for architecture and per-model API/prompt details
+4. `docs/COSTS.md` for official Replicate dollar tables (do not re-search pricing)
 
 ## Non-negotiables
 

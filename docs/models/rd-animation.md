@@ -3,9 +3,13 @@
 Style-consistent animated pixel sprites / spritesheets.  
 https://replicate.com/retro-diffusion/rd-animation
 
-## Cost
+## Cost (official Replicate Pricing, snapshot 2026-10-31)
 
-~**$0.07** per base animation run (advanced styles can be $0.10–$0.25).
+From https://replicate.com/retro-diffusion/rd-animation:
+
+- **$0.07** per output image (~14 outputs / $1)
+
+See `docs/COSTS.md`.
 
 ## Styles & sizes
 
