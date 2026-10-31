@@ -14,7 +14,9 @@
     "typecheck": "tsc --noEmit",
     "generate": "tsx scripts/generate-asset.ts",
     "estimate": "tsx scripts/estimate-cost.ts",
-    "create": "node packages/create-pixijs-game/bin/create-pixijs-game.mjs --local"
+    "create": "node packages/create-pixijs-game/bin/create-pixijs-game.mjs --local",
+    "publish:create": "tsx scripts/publish-create-package.ts",
+    "publish:create:dry": "tsx scripts/publish-create-package.ts --dry-run"
   },
   "bin": {
     "create-pixijs-game": "./packages/create-pixijs-game/bin/create-pixijs-game.mjs"

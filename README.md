@@ -89,8 +89,8 @@ Agents must follow `AGENTS.md` and the skills under `.cursor/skills/`. Official 
 | npm | `create-pixijs-game` → `npm create pixijs-game@latest` |
 
 ```bash
-npm login
-npm publish -w create-pixijs-game --access public
+# Put NPM_TOKEN in .env (see .env.example), then:
+npm run publish:create
 ```
 
 ## License

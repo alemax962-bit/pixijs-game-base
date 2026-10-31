@@ -25,7 +25,7 @@ This repository is a **flexible PixiJS 2D browser-game starter** plus **Cursor g
    - Showing the estimate to the user
    - Getting explicit approval
    - Then running with `--yes` / `yes: true`
-5. Set `REPLICATE_API_TOKEN` in `.env` (see `.env.example`). Never commit `.env`.
+5. Set secrets in `.env` only (see `.env.example`): `REPLICATE_API_TOKEN`, `NPM_TOKEN`, etc. Never commit `.env`.
 
 ## Scaffolding a new game repo
 

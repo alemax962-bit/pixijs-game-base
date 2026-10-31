@@ -152,43 +152,48 @@ git push
 
 ## 4. Publish `create-pixijs-game` to npm
 
+**All tokens live in `.env`** (gitignored). See `.env.example`.
+
 ### Prerequisites
 
 - npm account: https://www.npmjs.com/signup
-- Package name `create-pixijs-game` must be free (check https://www.npmjs.com/package/create-pixijs-game)
+- Package name free: https://www.npmjs.com/package/create-pixijs-game
+
+### If you use a security key (no authenticator OTP)
+
+CLI `npm publish` asks for `--otp`, which security keys don’t provide. Use a **granular access token** instead:
+
+1. Open https://www.npmjs.com/settings/~/tokens → **Generate New Token** → **Granular**
+2. Permissions: **Read and write (publish and stage)**
+3. Check **Bypass two-factor authentication** (confirm with your security key in the browser)
+4. Copy the token into local `.env`:
+
+```env
+NPM_TOKEN=npm_…
+REPLICATE_API_TOKEN=…   # if you use Replicate
+```
+
+5. Publish from the repo root:
+
+```bash
+npm run publish:create:dry   # optional
+npm run publish:create       # reads NPM_TOKEN from .env
+```
+
+### If you use an authenticator app (OTP)
 
 ```bash
 npm login
-npm whoami
+npm publish -w create-pixijs-game --access public --otp=123456
 ```
-
-### Publish
-
-From the **repo root**:
-
-```bash
-# dry-run first (see what would upload)
-npm publish -w create-pixijs-game --access public --dry-run
-
-# real publish
-npm publish -w create-pixijs-game --access public
-```
-
-Or from the package folder:
-
-```bash
-cd packages/create-pixijs-game
-npm publish --access public
-```
-
-`--access public` is required for scoped packages; for the unscoped name `create-pixijs-game` it is still a good habit on first publish.
 
 ### Version bumps later
 
 ```bash
 cd packages/create-pixijs-game
 npm version patch   # 0.1.0 → 0.1.1
-npm publish --access public
+cd ../..
+npm run publish:create
 git push --follow-tags
 ```
 
@@ -243,8 +248,8 @@ npm run dev
 - [ ] Replace `OWNER` / `YOUR_USER` defaults in `packages/create-pixijs-game`
 - [ ] Add `giget` dependency to the create package
 - [ ] Commit + `git push`
-- [ ] `npm login`
-- [ ] `npm publish -w create-pixijs-game --access public`
+- [ ] Put `NPM_TOKEN` in `.env` (granular token + Bypass 2FA if using a security key)
+- [ ] `npm run publish:create`
 - [ ] Verify: `npm create pixijs-game@latest test-game`
 
 ---
